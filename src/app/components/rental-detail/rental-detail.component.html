@@ -1,0 +1,30 @@
+<br>
+<table class="table">
+    <thead class="table">
+        <tr>
+            <th class="text-center" colspan="7"><h4>KİRALAMALAR</h4></th>
+        </tr>
+    </thead>
+    
+    <thead class="table-dark">
+      <tr class="text-center">
+        <th><i class="fa-solid fa-money-check-dollar"></i></th>
+        <th scope="col">MARKA</th>
+        <th scope="col">MODEL</th>
+        <th scope="col">AD SOYAD</th>
+        <th scope="col">GÜNLÜK FİYAT</th>
+        <th scope="col">DETAY</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class ="text-center " *ngFor = "let rentalDetail of rentalDetails">
+        <td><i class="fa-solid fa-money-check-dollar"></i></td>
+        <td>{{rentalDetail.brandName}}</td>
+        <td>{{rentalDetail.modelName}}</td>
+        <td>{{rentalDetail.firstName}} {{rentalDetail.lastName}}</td>
+        <td>{{rentalDetail.dailyPrice}} ₺</td>
+        <td><button class="btn btn-outline-danger">Detayı Gör</button></td>
+      </tr>
+  
+    </tbody>
+</table>
