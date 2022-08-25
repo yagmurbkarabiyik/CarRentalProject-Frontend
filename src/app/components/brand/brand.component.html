@@ -1,13 +1,28 @@
 <br>
 <ul class="list-group">
-    <li class="list-group-item text-center text-white bg-dark">
-        <label class="form-check-label" for="firstCheckbox">MARKALAR</label>
-      </li>
+    <li class="list-group-item text-center text-white bg-dark" (click) = "reset()" [class]="getAllBrandClass()" routerLink = "/cars">
+        <!-- <label class="form-check-label" for="firstCheckbox"></label> -->
+        MARKALAR
+        
+    </li>
 
-    <li class="list-group-item bg-light" *ngFor = "let brand of brands">
-      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-      <label class="form-check-label" for="firstCheckbox">{{brand.brandName}}</label>
+    <li class="list-group-item bg-light" 
+     (click) = "setCurrentBrand(brand)"
+    routerLink = "/cars/brand/{{brand.brandId}}"      
+    *ngFor = "let brand of brands"
+    [class] = "getCurrentBrandClass(brand)"
+    class="form-check-label">
+      <!-- <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"> -->
+
+      <!-- <label (click) = "setCurrentBrand(brand)"
+      routerLink = "/cars/brand/{{brand.brandId}}"      
+      [class] = "getCurrentBrandClass(brand)"
+      class="form-check-label"
+      >{{brand.brandName}}
+      </label> -->
+      {{brand.brandName}}
     </li>
 
     
   </ul>
+  

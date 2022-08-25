@@ -1,12 +1,18 @@
 <br>
 <ul class="list-group">
-    <li class="list-group-item text-center text-white bg-dark">
-        <label class="form-check-label" for="firstCheckbox">RENKLER</label>
+    <li class="list-group-item text-center text-white bg-dark" (click) = "reset()" [class]="getAllColorClass()" routerLink = "/cars">
+        RENKLER
       </li>
 
-    <li class="list-group-item bg-light" *ngFor = "let color of colors">
-      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-      <label class="form-check-label" for="firstCheckbox">{{color.colorName}}</label>
+    <li class="list-group-item bg-light" 
+    (click) = "setCurrentColor(color)"
+    routerLink = "/cars/color/{{color.colorId}}"
+    *ngFor = "let color of colors"
+    [class] = "getCurrentColorClass(color)"
+    class = "form-check-label">
+      <!-- <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"> -->
+      <!-- <label class="form-check-label" for="firstCheckbox">{{color.colorName}}</label> -->
+      {{color.colorName}}
     </li>
 
     

@@ -1,5 +1,5 @@
 <br>
-<table class="table">
+<!-- <table class="table">
     <thead class="table">
         <tr>
             <th class="text-center" colspan="7"><h4>ARABALAR</h4></th>
@@ -29,4 +29,27 @@
       </tr>
   
     </tbody>
-</table>
+</table> -->
+<div class="row">
+  <div class="col-md-4" *ngFor = "let carDetail of carDetails">
+    <div class="card" style="width: 18rem;">
+      <img src="{{imageUrl}}{{carDetail.imagePath}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title text-center">{{carDetail.brandName}}</h4>
+        <h6 class="text-center">{{carDetail.modelName}}</h6>
+      </div>
+      <ul class="list-group list-group-flush text-center text-bolder">
+        <li class="list-group-item"><i><b>Model Yılı</b></i> | {{carDetail.modelYear}}</li>
+        <li class="list-group-item"><i><b>Günlük Fiyat</b></i> | {{carDetail.dailyPrice | currency:"₺"}}</li>
+      </ul>
+      <div class="card-body text-center">
+        <a href="#" class="btn btn-outline-secondary" (click) = setCurrentCarDetail(carDetail) routerLink = "/cars/car-detail-page/{{carDetail.carId}}" >Detaya Git</a>
+      
+      </div>
+    </div>
+    <br>
+  </div>
+ 
+</div>
+
+
