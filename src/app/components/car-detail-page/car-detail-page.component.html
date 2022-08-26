@@ -1,22 +1,24 @@
 <br>
 <div class="card text-center">
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" *ngFor =" let carImage of carImages">
+    <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button
+        *ngFor ="let carImage of carImages; let i = index" 
+        type="button" 
+        data-bs-target="#carouselExampleIndicators" 
+        attr.data-bs-slide-to="{{ i }}" 
+        [class]="getButtonClass(carImage)" 
+        aria-current="true" 
+        aria-label="Slide 1">
+        </button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="{{imageUrl}}{{carImage.imagePath}}" class="d-block w-100" alt="...">
-        </div>
-        <!-- <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="...">
-        </div> -->
+        <div 
+        *ngFor = "let carImage of carImages"
+        [class] = "getCurrentImageClass(carImage)"
+        >
+          <img [src]="getCarImage(carImage, carImage.carId)" class="d-block w-100" alt="...">
+        </div>    
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -26,8 +28,61 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
-    </div>
+    </div>  -->
 
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          *ngFor="let image of carImages; let i = index"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          attr.data-bs-slide-to="{{ i }}"
+          [class]="getButtonClass(image)"
+          aria-current="true"
+          aria-label="Slide 0"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div
+          *ngFor="let image of carImages"
+          [class]="getCurrentImageClass(image)"
+        >
+          <img
+            [src]="getCarImage(image, image.carId)"
+            class="d-block w-100"
+            alt="Image"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span
+          class="carousel-control-prev-icon bg-dark"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span
+          class="carousel-control-next-icon bg-dark"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
     <div *ngFor = "let carDetail of carDetails">
       <div class="card-header">
         <h5><b>{{carDetail.brandName}} | {{carDetail.modelName}}</b></h5>
@@ -35,7 +90,7 @@
       <div class="card-body">
         <h5 class="card-title"></h5>
         <p class="card-text">{{carDetail.description}}</p>
-        <a href="#" class="btn btn-outline-danger btn-lg">LET'S RENT!</a>
+        <button type="button" class="btn btn-outline-danger btn-lg">LET'S RENT!</button>
       </div>
       <div class="card-footer text-muted">
        <h5>Günlük Fiyatı | {{carDetail.dailyPrice | currency:"₺"}}</h5> 
@@ -43,3 +98,5 @@
     </div>
 
   </div>
+
+  console.log(i)
